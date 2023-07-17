@@ -6,14 +6,14 @@
             id="titulo" 
             class="block mt-1 w-full" 
             type="text" 
-            name="titulo" 
+            wire:model="titulo" 
             :value="old('titulo')" 
             placeholder="Titulo Vacante"/>
     </div>
 
     <div>
         <x-input-label for="salario" :value="__('Salario Mensual')" />
-        <select name="salario" id="salario" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
+        <select wire:model="salario" id="salario" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
             <option value="">--Seleccione una opción--</option>
             @foreach ($salarios as $salario)
                 <option value="{{ $salario->id }}">{{ $salario->salario }}</option>
@@ -23,8 +23,11 @@
 
     <div>
         <x-input-label for="categoria" :value="__('Categoría')" />
-        <select name="categoria" id="categoria" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
-            
+        <select wire:model="categoria" id="categoria" class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
+            <option value="">--Seleccione una opción--</option>
+                @foreach ($categorias as $categoria)
+                    <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
+                @endforeach
         </select>
     </div>
 
@@ -34,7 +37,7 @@
             id="empresa" 
             class="block mt-1 w-full" 
             type="text" 
-            name="empresa" 
+            wire:model="empresa" 
             :value="old('empresa')" 
             placeholder="Empresa: Netflix, Uber, Shopify"/>
     </div>
@@ -45,14 +48,14 @@
             id="ultimo_dia" 
             class="block mt-1 w-full" 
             type="date" 
-            name="ultimo_dia" 
+            wire:model="ultimo_dia" 
             :value="old('ultimo_dia')"/>
     </div>
 
     <div>
         <x-input-label for="descripcion" :value="__('Descripción del Puesto')" />
         <textarea 
-            name="descripcion" 
+            wire:model="descripcion" 
             id="descripcion" 
             cols="30" 
             rows="10"
@@ -68,7 +71,7 @@
             id="imagen" 
             class="block mt-1 w-full" 
             type="file" 
-            name="imagen"/>
+            wire:model="imagen"/>
     </div>
 
     <div>
