@@ -1,4 +1,4 @@
-<form action="" class="md:w-1/2 space-y-5">
+<form action="" class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
      
      <div>
         <x-input-label for="titulo" :value="__('Titulo Vacante')" />
@@ -9,6 +9,10 @@
             wire:model="titulo" 
             :value="old('titulo')" 
             placeholder="Titulo Vacante"/>
+
+        @error('titulo')
+            <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
 
     <div>
@@ -19,6 +23,10 @@
                 <option value="{{ $salario->id }}">{{ $salario->salario }}</option>
             @endforeach
         </select>
+
+        @error('salario')
+        <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
 
     <div>
@@ -29,6 +37,11 @@
                     <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
                 @endforeach
         </select>
+        
+        @error('categoria')
+        <livewire:mostrar-alerta :message="$message"/>
+        @enderror
+
     </div>
 
     <div>
@@ -40,6 +53,11 @@
             wire:model="empresa" 
             :value="old('empresa')" 
             placeholder="Empresa: Netflix, Uber, Shopify"/>
+
+        @error('categoria')
+        <livewire:mostrar-alerta :message="$message"/>
+        @enderror
+
     </div>
 
     <div>
@@ -50,6 +68,11 @@
             type="date" 
             wire:model="ultimo_dia" 
             :value="old('ultimo_dia')"/>
+
+        @error('ultimo_dia')
+        <livewire:mostrar-alerta :message="$message"/>
+        @enderror
+
     </div>
 
     <div>
@@ -63,6 +86,11 @@
             class="block text-sm text-gray-500 font-bold uppercase mb-2 w-full">
 
         </textarea>
+
+    @error('ultimo_dia')
+    <livewire:mostrar-alerta :message="$message"/>
+    @enderror
+
     </div>
 
     <div>
@@ -71,7 +99,20 @@
             id="imagen" 
             class="block mt-1 w-full" 
             type="file" 
-            wire:model="imagen"/>
+            wire:model="imagen"
+            accept="image/*"/>
+        
+        <div class="my-5 w-80">
+            @if ($imagen)
+                Imagen:
+                <img src="{{ $imagen->temporaryUrl() }}" alt="">               
+            @endif
+        </div>
+
+        @error('imagen')
+        <livewire:mostrar-alerta :message="$message"/>
+        @enderror
+
     </div>
 
     <div>
