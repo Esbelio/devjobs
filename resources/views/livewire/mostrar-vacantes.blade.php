@@ -15,7 +15,7 @@
                     Candidatos
                 </a>
                 
-                <a href="#" 
+                <a href="{{ route('vacantes.edit', $vacante->id) }}" 
                     class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                     Editar
                 </a>
@@ -33,4 +33,7 @@
         <p class="p-3 text-center text-sm text-gray-600">No hay Vacantes</p>
         
     @endforelse
+</div>
+<div class="mt-10">
+    {{ $vacantes->links() }}
 </div>
