@@ -13,7 +13,8 @@ class VacantePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        //Permiso por roles
+        return $user->rol === 2;
     }
 
     /**
@@ -29,7 +30,8 @@ class VacantePolicy
      */
     public function create(User $user): bool
     {
-        //
+        //Puede crear solo si es Reclutador
+        return $user->rol === 2;
     }
 
     /**
