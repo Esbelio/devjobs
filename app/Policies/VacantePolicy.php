@@ -14,7 +14,7 @@ class VacantePolicy
     public function viewAny(User $user): bool
     {
         //Permiso por roles
-        return $user->rol === 2;
+        return $user->rol === 2; 
     }
 
     /**
