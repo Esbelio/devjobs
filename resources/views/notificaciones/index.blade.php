@@ -23,7 +23,7 @@
                                     <span class="font-bold">{{$notificacion->created_at->diffForHumans()}}</span>
                                 </p>
                             </div>
-                            <div class="mt-5">
+                            <div class="mt-5 lg:mt-0">
                                 <a href="#" class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg">Ver candidatos</a>
                             </div>
                         </div>
